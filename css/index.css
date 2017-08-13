@@ -1,0 +1,96 @@
+body{
+    background-color: #29363F;
+}
+::selection{
+    color: white;
+    background-color: rgba(0,0,0,0.25);
+}
+.btn {
+    text-transform: uppercase;
+    -webkit-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+.btn:hover {
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    letter-spacing: 2px;
+    color: #fff;
+    outline: none !important;
+}
+.btn:focus {
+    letter-spacing: 2px;
+    color: #fff;
+    outline: none !important;
+}
+.error{
+    color: crimson;
+    padding-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+a{
+    text-decoration: none !important;
+}
+.wrapper{
+    position: relative;
+    top: 200px;
+}
+.logo-dots{
+    display: inline-block;
+    margin-left: 180px;
+    position: relative;
+    top: 60px;
+}
+.logo-text{
+    font-family: 'Baloo Bhaina', cursive;
+    color: white;
+    display: inline-block;
+    font-size: 100px;
+    position: relative;
+    left: 10px;
+    top: 60px;
+}
+.circle-container div{
+    display: inline-block;
+    margin: 5px 5px;
+}
+.dots{
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+.border{
+    background-color: #cccccc;
+    width: 2px;
+    height: 250px;
+    display: inline-block;
+}
+.login-field-form{
+    width: 80%;
+    margin-left: 20px;
+    position: relative;
+    top: -50px;
+    display: inline-block;
+}
+.inp-field{
+    background: transparent;
+    color: white;
+}
+.login-btn{
+    width: 100px;
+    float: right;
+    background: transparent;
+    color: #ffffff;
+    font-weight: bold;
+    border: 1px solid darkorange;
+}
+.signup-btn{
+    margin-top: 10px;
+    width: 100%;
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid green;
+    font-weight: bold;
+}
