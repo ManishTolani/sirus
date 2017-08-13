@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 13, 2017 at 09:45 PM
+-- Generation Time: Aug 13, 2017 at 10:24 PM
 -- Server version: 10.1.22-MariaDB
 -- PHP Version: 7.1.4
 
@@ -70,35 +70,6 @@ CREATE TABLE `files` (
   `confirmed` enum('1','0','-1') COLLATE utf8_unicode_ci NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `files`
---
-
-INSERT INTO `files` (`id`, `userid`, `file_name`, `file_type`, `file_size`, `link`, `ip`, `downloaded`, `rating`, `uploaded`, `confirmed`) VALUES
-(1, 0, '01.WebServices Part 1 - Introduction (concept).mp4', 'video', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:30:23', '-1'),
-(2, 0, '10.jpg', 'image', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:31:16', '-1'),
-(3, 0, '02 - Tera Mera Rishta-(MyMp3Singer.mp3', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:31:37', '1'),
-(4, 0, 'Ubuntu Kylin Theme.deb', 'software', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:32:57', '1'),
-(5, 0, 'git.deb', 'software', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:51:03', '-1'),
-(6, 0, 'Web Development In 2017 - A Practical Guide - YouTube.MP4', 'video', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:51:31', '-1'),
-(7, 0, 'Tamma Tamma Loge -  Thanedaar (Original) 320Kbps.mp3', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:52:01', '1'),
-(8, 0, 'Afreen Afreen-(Mr-Jatt.com) (1).mp3', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:52:05', '-1'),
-(9, 0, 'Dil Mein Sanam Ki Surat - Kumar Sanu 320Kbps.mp3', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:52:09', '-1'),
-(10, 0, 'Ki Banu Duniya Da-(Mr-Jatt.com).mp3', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 00:52:13', '-1'),
-(11, 0, 'Wafa-Ka-Kaisa-Sila-Diya-Female (SongsMp3.Com).mp3', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 01:24:26', '-1'),
-(12, 0, 'The Chainsmokers - Closer (Lyric) ft. Halsey (320  kbps).mp3', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 01:36:11', '1'),
-(13, 0, '02 Udja Re.mp3', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 01:50:35', '-1'),
-(14, 0, 'Work from Home.mp3', 'music', 0, '', '127.0.0.1', 1, 0, '2017-08-13 07:42:10', '0'),
-(15, 0, 'Tum Hi Ho.m4a', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 07:42:10', '0'),
-(16, 0, 'love-you-like-a-love-song-selena-gomez-the-scene--1411570461.mp3', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 07:42:10', '0'),
-(17, 0, 'Move Your Body.m4a', 'music', 0, '', '127.0.0.1', 0, 0, '2017-08-13 07:42:11', '0'),
-(18, 0, 'Addicted - Enrique Iglesias.mp3', 'music', 10077816, '', '127.0.0.1', 0, 0, '2017-08-13 07:50:10', '1'),
-(19, 0, 'Monster.mp3', 'music', 10103255, '', '127.0.0.1', 0, 0, '2017-08-13 07:50:10', '0'),
-(20, 0, 'Ciara Dance Like We re Making Love (CDQ) .mp3', 'music', 10281816, '', '127.0.0.1', 0, 0, '2017-08-13 07:50:10', '-1'),
-(21, 0, 'Mirrors_1.mp3', 'music', 10022286, '', '127.0.0.1', 0, 0, '2017-08-13 07:50:10', '0'),
-(22, 0, 'Soch Hardy Sandhu.mp3', 'music', 9591676, '', '127.0.0.1', 0, 0, '2017-08-13 13:25:03', '0'),
-(23, 0, 'Tu Zaroori.mp3', 'music', 11718781, '', '127.0.0.1', 0, 0, '2017-08-13 13:26:33', '0');
-
 -- --------------------------------------------------------
 
 --
@@ -150,7 +121,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `password`, `premium`, `restrict_download_speed`, `total_uploads`, `total_downloads`, `avatar`, `last_ip`, `locations`, `is_logged_in`, `allow_access`, `allow_download`, `allow_upload`, `no_of_login`, `no_of_files_uploaded`, `no_of_files_downloaded`, `verified`, `token`, `created_at`, `updated_at`) VALUES
-(1, 'Sumeet', 'Dewangan', 'dewangan.sumeet700@gmail.com', 'Sumeet@1234', 0, 0, 0, 1, NULL, '127.0.0.1', NULL, 0, 1, 0, 1, 20, 0, 0, 0, '', '2017-08-10 15:29:01', '2017-08-10 15:29:01');
+(1, 'Sumeet', 'Dewangan', 'dewangan.sumeet700@gmail.com', 'Sumeet@1234', 0, 0, 0, 0, NULL, '127.0.0.1', NULL, 1, 1, 0, 1, 0, 0, 0, 0, '', '2017-08-10 15:29:01', '2017-08-10 15:29:01');
 
 --
 -- Indexes for dumped tables
@@ -206,7 +177,7 @@ ALTER TABLE `downloads`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `uploads`
 --
