@@ -26,10 +26,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>DataTables | Gentelella</title>
+    <title>Messages</title>
     <?php require('supportFiles/styles.php'); ?>
     <style>
-        
+
     </style>
   </head>
 

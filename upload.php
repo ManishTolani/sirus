@@ -22,13 +22,13 @@
     }
 
     if(!empty($_FILES)){
-    	// database configuration
-    	$dbHost = 'localhost';
+
+        $dbHost = 'localhost';
     	$dbUsername = 'root';
     	$dbPassword = '';
     	$dbName = 'ltz';
-    	//connect with the database
-    	$conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+        $conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
     	if($conn->connect_errno){
     		echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
     	}
@@ -67,8 +67,7 @@
             fwrite($fh, json_encode($data,JSON_UNESCAPED_UNICODE));
             fclose($fh);
 
-            // insert file information into db table
-    		$conn->query("INSERT INTO `files` (file_name, file_type, userid, ip, file_size) VALUES('$fileName', '$fileType', '$user_id', '$ip', '$fileSize');");
+            $conn->query("INSERT INTO `files` (file_name, file_type, userid, ip, file_size) VALUES('$fileName', '$fileType', '$user_id', '$ip', '$fileSize');");
 
             $conn->query("UPDATE users SET total_uploads=total_uploads+1 WHERE id=$user_id");
             $file_id = $conn->insert_id;

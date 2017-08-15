@@ -57,7 +57,7 @@
             $file = fopen($local_file, "r");
 
             while(!feof($file)) {
-                // send the current file part to the browser
+
                 print fread($file, round($download_rate * 1024));
                 flush();
                 sleep(1);
