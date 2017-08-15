@@ -61,7 +61,6 @@ colors = Array('#E74C3C', 'purple', 'blue', 'aero', 'orange', 'orange', 'blue', 
 colorHex = Array('#BDC3C7', '#9B59B6', '#4285f4', '#26B99A', '#3498DB', 'orangered', 'aqua', 'skyblue');
 colorHover = Array('#CFD4D8', '#B370CF', '#42A5FF', '#36CAAB', '#49A9EA', 'orangered', 'aqua', 'skyblue');
 
-// Sidebar
 function init_sidebar() {
 	// TODO: This is some kind of easy fix, maybe we can improve this
 	var setContentHeight = function () {
@@ -150,13 +149,11 @@ function init_sidebar() {
 		});
 	}
 };
-// /Sidebar
 
 var randNum = function() {
 	return (Math.floor(Math.random() * (1 + 40 - 20))) + 20;
 };
 
-// Table
 $('table input').on('ifChecked', function () {
     checkState = '';
     $(this).parent().parent().parent().addClass('selected');
@@ -168,7 +165,6 @@ $('table input').on('ifUnchecked', function () {
     countChecked();
 });
 
-// NProgress
 if (typeof NProgress != 'undefined') {
     $(document).ready(function () {
         NProgress.start();
@@ -326,7 +322,6 @@ function init_gauge() {
 	}
 }
 
-/* KNOB */
 function init_knob() {
 
 	if( typeof ($.fn.knob) === 'undefined'){ return; }
@@ -431,17 +426,23 @@ function init_knob() {
 
 };
 
-/* INPUT MASK */
-function init_InputMask() {
+$(document).ready(function() {
+    if ($(".js-switch")[0]) {
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+        elems.forEach(function (html) {
+            var switchery = new Switchery(html, {
+                color: '#26B99A'
+            });
+        });
+    }
+});
 
+function init_InputMask() {
 	if( typeof ($.fn.inputmask) === 'undefined'){ return; }
 
-
-	$(":input").inputmask();
-
+    $(":input").inputmask();
 };
 
-/* DATERANGEPICKER */
 function init_daterangepicker() {
 
 	if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
@@ -649,7 +650,6 @@ function init_daterangepicker_reservation() {
 
 }
 
-/* VALIDATOR */
 function init_validator () {
 
 		if( typeof (validator) === 'undefined'){ return; }
@@ -685,7 +685,6 @@ function init_validator () {
 
 	  };
 
-/* CALENDAR */
 function  init_calendar() {
 
 	if( typeof ($.fn.fullCalendar) === 'undefined'){ return; }
@@ -787,7 +786,6 @@ function  init_calendar() {
 
 };
 
-/* DATA TABLES */
 function init_DataTables() {
 
 	if( typeof ($.fn.DataTable) === 'undefined'){ return; }
@@ -870,7 +868,6 @@ function init_DataTables() {
 
 };
 
-
 function init_storage() {
 	$('#storage_analysis_table').empty();
 	for(var i=0; i<keys.length; i++) {
@@ -878,7 +875,6 @@ function init_storage() {
 		$('#storage_analysis_table').append(element);
 	}
 }
-
 
 function getNewData() {
 	$.ajax({
@@ -898,11 +894,11 @@ function getNewData() {
 				keys.push(key);
 				values.push(value);
 			});
-			
+
 			init_flot_chart();
 			init_chart_doughnut();
 			init_gauge();
-			
+
 			init_storage();
         },
         error: function(response) {
@@ -926,4 +922,3 @@ $(document).ready(function() {
 	getNewData();
 	init_storage();
 });
-

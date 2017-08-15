@@ -152,7 +152,7 @@ class Database
     	$searchStr = "";
     	foreach($k as $i) $searchStr .= $i."%";
 
-            $sql = "SELECT file_name,file_type,uploaded,link FROM `files` WHERE file_name LIKE '$searchStr' AND confirmed = 1 ORDER BY uploaded DESC;";
+            $sql = "SELECT id,file_name,file_type,uploaded,link FROM `files` WHERE file_name LIKE '$searchStr' AND confirmed = 1 ORDER BY uploaded DESC;";
             $res = mysqli_query($this->link, $sql);
             if( $res ){
                 $a = [];

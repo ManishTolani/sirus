@@ -1,6 +1,6 @@
 <?php
 echo "
-<div class='col-md-3 left_col'>
+<div class='col-md-3 left_col menu_fixed'>
     <div class='left_col scroll-view'>
         <div class='navbar nav_title' style='border: 0;'>
             <a href='index.php' class='site_title'><i class='fa fa-paw'></i> <span><b>Torrentz</b></span></a>
@@ -33,7 +33,6 @@ echo "
                 <h3>Advanced</h3>
                 <ul class='nav side-menu'>
                     <li><a href='profile_configuration.php'><i class='fa fa-laptop'></i> Configure your profile</a></li>
-                    <li><a href='premium_users.php'><i class='fa fa-laptop'></i> Premium Users <span class='label label-info pull-right'>Now: 5</span></a></li>
                     <li><a href='manage_users.php'><i class='fa fa-laptop'></i> User Management </a></li>
                     <li><a href='manage_files.php'><i class='fa fa-laptop'></i> Manage Files </a></li>
                 </ul>

@@ -20,7 +20,14 @@
         return $ipaddress;
     }
 
-    if(isset($_GET['file']) && isset($_GET['file_type'])) {
+    if(isset($_GET['file']) && isset($_GET['file_type']) && isset($_GET['file_id'])) {
+
+        $file = $_GET['file'];
+        $file_type = $_GET['file_type'];
+        $file_id = $_GET['file_id'];
+        $user_id = $_SESSION['user_data']['id'];
+        $ip = getip();
+
         $dbHost = 'localhost';
     	$dbUsername = 'root';
     	$dbPassword = '';
@@ -57,9 +64,9 @@
             }
             fclose($file);
 
-            $conn->query("UPDATE files SET downloaded=downloaded+1 WHERE file_name=".$_GET['file']);
-            $conn->query("UPDATE users SET total_downloads=total_downloads+1 WHERE id=".$_SESSION['user_data']['id']);
-            $conn->query("INSERT INTO `downloads` (fileid, userid, userip) VALUES");
+            $conn->query("UPDATE files SET downloaded=downloaded+1 WHERE id='$file_id'");
+            $conn->query("UPDATE users SET total_downloads=total_downloads+1 WHERE id='$user_id'");
+            $conn->query("INSERT INTO `downloads` (fileid, userid, userip) VALUES ('$file_id', '$user_id', '$ip');");
 
             $data = json_decode(file_get_contents("logs/data.json"), true);
             $data['total_downloads'] += 1;
