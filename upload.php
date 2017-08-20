@@ -1,6 +1,6 @@
 <?php
-
-    require('storageData.php');
+	session_start();
+	require('storageData.php');
 
     function getip() {
         $ipaddress = '';
@@ -21,7 +21,7 @@
         return $ipaddress;
     }
 
-    if(!empty($_FILES)){
+    if(!empty($_FILES) && isset($_SESSION) && isset($_SESSION['user_data'])) {
 
         $dbHost = 'localhost';
     	$dbUsername = 'root';
@@ -53,7 +53,6 @@
         }
 
         $targetDir = $targetDir . $fileType . "/";
-
         $targetFile = $targetDir.$fileName;
         $user_id = $_SESSION['user_data']['id'];
 
@@ -63,17 +62,16 @@
 			$data['total_uploads'] += 1;
             $data['new_upload_requests'] = (int)($data['total_uploads'] - ($data['accepted_requests'] + $data['rejected_requests']));
 
-            $fh = fopen("logs/data.json", 'w') or die("Error opening output file");
-            fwrite($fh, json_encode($data,JSON_UNESCAPED_UNICODE));
-            fclose($fh);
+			file_put_contents("logs/data.json", json_encode($data,JSON_UNESCAPED_UNICODE));
 
             $conn->query("INSERT INTO `files` (file_name, file_type, userid, ip, file_size) VALUES('$fileName', '$fileType', '$user_id', '$ip', '$fileSize');");
 
             $conn->query("UPDATE users SET total_uploads=total_uploads+1 WHERE id=$user_id");
-            $file_id = $conn->insert_id;
-
-            $conn->query("INSERT INTO uploads (userid, fileid, ip) VALUES('$user_id', '$file_id', '$ip');");
     	}
     	$conn->close();
     }
+	else {
+		echo "No file recieved";
+        print_r($_SESSION);
+	}
 ?>

@@ -31,12 +31,10 @@
 		$data = json_decode(file_get_contents("logs/data.json"), true);
         $data['storage'] = $final;
 
-		$fh = fopen("logs/data.json", 'w') or die("Error opening output file");
-		fwrite($fh, json_encode($data,JSON_UNESCAPED_UNICODE));
-		fclose($fh);
-
+		if(!file_put_contents("logs/data.json", json_encode($data, JSON_UNESCAPED_UNICODE))) {
+			http_response_code(500);
+		}
+		http_response_code(200);
 		return $final;
     }
-
-	echo json_encode(check_storage());
 ?>

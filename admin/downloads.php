@@ -9,14 +9,14 @@
         die("Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error);
     }
 
-    $arr = array();
-    $sql = 'SELECT * FROM downloads ORDER BY downloads.timestamp DESC';
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            array_push($arr, $row);
-        }
-    }
+	$downloads = array();
+	$sql = "SELECT files.file_name, files.file_type, files.file_size, downloads.start_time, downloads.end_time FROM downloads INNER JOIN files WHERE downloads.fileid = files.id";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			array_push($downloads, $row);
+		}
+	}
 
     $conn->close();
 ?>
@@ -59,26 +59,19 @@
                       <thead>
                         <tr>
                           <th>File Name</th>
-                          <th>Uploaded By</th>
-                          <th>Upload Time</th>
                           <th>File Type</th>
                           <th>File Size</th>
-                          <th>Accept / Reject</th>
+						  <th>Start Time</th>
+						  <th>End Time</th>
                         </tr>
                       </thead>
 
                       <tbody>
                         <?php
                             $id = 0;
-                            foreach ($arr as $row) {
-                                $counter = 0;
+                            foreach ($downloads as $row) {
                                 echo "<tr id=" . $id .">";
                                 foreach ($row as $col) {
-                                    $counter = $counter + 1;
-                                    if($counter == 1) {
-                                        $id = $col;
-                                        continue;
-                                    }
                                     echo "<td> $col </td>";
                                 }
                                 echo "</tr>";

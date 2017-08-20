@@ -107,7 +107,7 @@ function init_sidebar() {
 
 	// toggle small or large menu
 	$MENU_TOGGLE.on('click', function() {
-			console.log('clicked - menu toggle');
+
 
 			if ($BODY.hasClass('nav-md')) {
 				$SIDEBAR_MENU.find('li.active ul').hide();
@@ -329,14 +329,14 @@ function init_knob() {
 
 	$(".knob").knob({
 	  change: function(value) {
-		//console.log("change : " + value);
+		//
 	  },
 	  release: function(value) {
-		//console.log(this.$.attr('value'));
-		console.log("release : " + value);
+		//
+
 	  },
 	  cancel: function() {
-		console.log("cancel : ", this);
+
 	  },
 	  /*format : function (value) {
 	   return value + '%';
@@ -449,7 +449,7 @@ function init_daterangepicker() {
 
 
 	var cb = function(start, end, label) {
-	  console.log(start.toISOString(), end.toISOString(), label);
+
 	  $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 	};
 
@@ -501,7 +501,7 @@ function init_daterangepicker() {
 
 	});
 	$('#reportrange').on('apply.daterangepicker', function(ev, picker) {
-	  console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
+
 	});
 	$('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
 
@@ -524,7 +524,7 @@ function init_daterangepicker_right() {
 
 
 				var cb = function(start, end, label) {
-				  console.log(start.toISOString(), end.toISOString(), label);
+
 				  $('#reportrange_right span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
 				};
 
@@ -578,7 +578,7 @@ function init_daterangepicker_right() {
 
 				});
 				$('#reportrange_right').on('apply.daterangepicker', function(ev, picker) {
-				  console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
+
 				});
 				$('#reportrange_right').on('cancel.daterangepicker', function(ev, picker) {
 
@@ -607,25 +607,25 @@ function init_daterangepicker_single_call() {
 	  singleDatePicker: true,
 	  singleClasses: "picker_1"
 	}, function(start, end, label) {
-	  console.log(start.toISOString(), end.toISOString(), label);
+
 	});
 	$('#single_cal2').daterangepicker({
 	  singleDatePicker: true,
 	  singleClasses: "picker_2"
 	}, function(start, end, label) {
-	  console.log(start.toISOString(), end.toISOString(), label);
+
 	});
 	$('#single_cal3').daterangepicker({
 	  singleDatePicker: true,
 	  singleClasses: "picker_3"
 	}, function(start, end, label) {
-	  console.log(start.toISOString(), end.toISOString(), label);
+
 	});
 	$('#single_cal4').daterangepicker({
 	  singleDatePicker: true,
 	  singleClasses: "picker_4"
 	}, function(start, end, label) {
-	  console.log(start.toISOString(), end.toISOString(), label);
+
 	});
 
 
@@ -634,10 +634,10 @@ function init_daterangepicker_single_call() {
 function init_daterangepicker_reservation() {
 
 	if( typeof ($.fn.daterangepicker) === 'undefined'){ return; }
-	console.log('init_daterangepicker_reservation');
+
 
 	$('#reservation').daterangepicker(null, function(start, end, label) {
-	  console.log(start.toISOString(), end.toISOString(), label);
+
 	});
 
 	$('#reservation-time').daterangepicker({
@@ -688,7 +688,6 @@ function init_validator () {
 function  init_calendar() {
 
 	if( typeof ($.fn.fullCalendar) === 'undefined'){ return; }
-
 
 	var date = new Date(),
 		d = date.getDate(),
@@ -882,7 +881,7 @@ function getNewData() {
         url: "getData.php",
         statusCode: {
             500: function() {
-                console.log("Internal Server Error");
+
             }
         },
         success: function(response) {
@@ -890,10 +889,15 @@ function getNewData() {
 
 			keys = [];
 			values = [];
-			$.each(response['storage']['folders'], function(key, value) {
-				keys.push(key);
-				values.push(value);
-			});
+			if(response['storage']['free'] == '100.00') {
+				keys.push('Free Space');
+				values.push(100)
+			} else {
+				$.each(response['storage']['folders'], function(key, value) {
+					keys.push(key);
+					values.push(value);
+				});
+			}
 
 			init_flot_chart();
 			init_chart_doughnut();
@@ -902,7 +906,7 @@ function getNewData() {
 			init_storage();
         },
         error: function(response) {
-            console.log("Error in making request");
+
         }
     });
 	setTimeout(getNewData, 10000);

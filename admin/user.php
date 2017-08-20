@@ -10,9 +10,8 @@
             die("Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error);
         }
 
+		$user_data = array();
         $sql = "SELECT * FROM users WHERE id=".$_GET['user_id'];
-
-        $user_data = array();
         $result = $conn->query($sql);
         if ($result->num_rows == 1) {
             while($row = $result->fetch_assoc()) {
@@ -21,7 +20,7 @@
         }
 
         $uploads = array();
-        $sql = "SELECT id,file_name,file_type,file_size,uploaded FROM files WHERE userid=".$_GET['user_id'];
+        $sql = "SELECT id,file_name,file_type,file_size,uploaded FROM files WHERE userid=".$_GET['user_id'] . " LIMIT 5";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
@@ -30,7 +29,7 @@
         }
 
         $downloads = array();
-        $sql = "SELECT id,file_name,file_type,file_size,uploaded FROM files WHERE userid=".$_GET['user_id'];
+        $sql = "SELECT files.file_name, files.file_type, files.file_size, downloads.start_time, downloads.end_time FROM downloads INNER JOIN files WHERE downloads.userid=".$_GET['user_id'] . " LIMIT 5";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
@@ -39,7 +38,7 @@
         }
 
         $comments = array();
-        $sql = "SELECT * FROM comments WHERE user_id=".$_GET['user_id'];
+        $sql = "SELECT timestamp, title, message FROM comments WHERE user_id=".$_GET['user_id'] . " LIMIT 5";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
@@ -222,10 +221,9 @@
                                             <th>Limit Bandwidth To<br/> (in Mbps): </th>
                                             <td>
                                             <div style="height: 80px;">
-                                            <input class="knob" data-width="100" data-height="120" data-angleOffset=-125 data-angleArc=250 data-fgColor="#34495E" data-rotation="anticlockwise" value="35">
+                                            <input class="knob" data-width="100" data-height="120" data-angleOffset=-125 data-angleArc=250 data-fgColor="#34495E" data-rotation="anticlockwise" value=<?php echo $user_data['restrict_download_speed'];?> >
                                             </div></td>
                                         </tr></table>
-
                                     </td>
                                 </tr>
                             </table><br />
@@ -241,30 +239,33 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                            <table class="table table-hover table-striped">
                               <thead>
                                 <tr>
+								  <th style="width: 50px;">#</th>
                                   <th>File Name</th>
-                                  <th>File Type</th>
-                                  <th>File Size</th>
-                                  <th>Uploaded</th>
-                                  <th>Action</th>
+                                  <th style="width: 100px;">File Type</th>
+                                  <th style="width: 100px;">File Size</th>
+                                  <th style="width: 150px;">Uploaded</th>
+                                  <th style="width: 50px;">Action</th>
                                 </tr>
                               </thead>
 
                               <tbody>
                                 <?php
                                     $id = 0;
+									$par_count = 1;
                                     foreach ($uploads as $row) {
                                         $counter = 0;
                                         echo "<tr id=" . $id .">";
                                         foreach ($row as $col) {
-                                                $counter = $counter + 1;
-                                                if($counter == 1) {
-                                                    $id = $col;
-                                                    continue;
-                                                }
-                                                echo "<td> $col </td>";
+												if($counter == 0) {
+													echo "<td>" . $par_count++ . "</td>";
+													$id = $col;
+												} else {
+													echo "<td> $col </td>";
+												}
+												$counter = $counter + 1;
                                             }
 
                                             echo "<td style='text-align: center; padding-top: 16px;'>
@@ -285,29 +286,30 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <table id="datatable-fixed-header" class="table table-striped table-bordered">
+							<table class="table table-hover table-striped">
                               <thead>
                                 <tr>
+								  <th style="width: 50px;">#</th>
                                   <th>File Name</th>
-                                  <th>File Type</th>
-                                  <th>File Size</th>
-                                  <th>Timestamp</th>
+                                  <th style="width: 100px;">File Type</th>
+                                  <th style="width: 100px;">File Size</th>
+                                  <th style="width: 150px;">Start Time</th>
+                                  <th style="width: 150px;">End Time</th>
                                 </tr>
                               </thead>
 
                               <tbody>
                                 <?php
-                                    $id = 0;
+									$par_count = 1;
                                     foreach ($downloads as $row) {
                                         $counter = 0;
                                         echo "<tr id=" . $id .">";
                                         foreach ($row as $col) {
-                                                $counter = $counter + 1;
-                                                if($counter == 1) {
-                                                    $id = $col;
-                                                    continue;
-                                                }
-                                                echo "<td> $col </td>";
+                                                if($counter == 0) {
+													echo "<td>" . $par_count++ . "</td>";
+												}
+												echo "<td> $col </td>";
+												$counter = $counter + 1;
                                             }
                                         echo "</tr>";
                                     }
@@ -323,36 +325,20 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            <table id="datatable-fixed-header" class="table table-striped table-bordered">
+                            <table class="table table-striped table-hover">
                               <thead>
                                 <tr>
-                                  <th>File Name</th>
-                                  <th>File Type</th>
-                                  <th>File Size</th>
-                                  <th>Uploaded</th>
-                                  <th>Action</th>
+                                  <th style="width: 150px;">Date and Time</th>
+                                  <th>Message</th>
                                 </tr>
                               </thead>
 
                               <tbody>
                                 <?php
-                                    $id = 0;
                                     foreach ($comments as $row) {
-                                        $counter = 0;
-                                        echo "<tr id=" . $id .">";
-                                        foreach ($row as $col) {
-                                                $counter = $counter + 1;
-                                                if($counter == 1) {
-                                                    $id = $col;
-                                                    continue;
-                                                }
-                                                echo "<td> $col </td>";
-                                            }
-
-                                            echo "<td style='text-align: center; padding-top: 16px;'>
-                                                <input type='hidden' value=" . $id . " />";
-                                            echo "<a href='' style='position:relative; top: -7px;'><i class='fa fa-trash fa-lg'></i></a>";
-                                            echo "</td>";
+                                        echo "<tr>";
+                                        echo "<td>" . $row['timestamp'] . "</td>";
+										echo "<td><b>" . $row['title'] . "</b><br />" . $row['message'] . "</b></td>";
                                         echo "</tr>";
                                     }
                                     ?>
@@ -366,7 +352,6 @@
         </div>
 
         <?php require('supportFiles/footer.php'); ?>
-
       </div>
     </div>
     <?php require('supportFiles/scripts.php'); ?>

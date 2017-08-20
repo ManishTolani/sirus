@@ -39,7 +39,6 @@
     	}
 
         $local_file = '/opt/lampp/htdocs/ltz/uploads/'. $_GET['file_type'] . '/' . $_GET['file'];
-        //$download_file = 'image.jpg';
         $download_file = $_GET['file'];
 
         ignore_user_abort(true);
@@ -64,8 +63,6 @@
             }
             fclose($file);
 
-            $conn->query("UPDATE files SET downloaded=downloaded+1 WHERE id='$file_id'");
-            $conn->query("UPDATE users SET total_downloads=total_downloads+1 WHERE id='$user_id'");
             $conn->query("INSERT INTO `downloads` (fileid, userid, userip) VALUES ('$file_id', '$user_id', '$ip');");
 
             $data = json_decode(file_get_contents("logs/data.json"), true);

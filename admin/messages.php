@@ -1,4 +1,5 @@
 <?php
+
     $dbHost = 'localhost';
     $dbUsername = 'root';
     $dbPassword = '';
@@ -9,16 +10,14 @@
         echo "Failed to connect to MySQL: (" . $conn->connect_errno . ") " . $conn->connect_error;
     }
 
-    $sql = 'SELECT * from comments ORDER BY timestamp DESC';
-
-    $arr = array();
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $row['file_size'] = round(($row['file_size']/(1024*1024)), 2) . ' MB';
-            array_push($arr, $row);
-        }
-    }
+    $comments = array();
+	$sql = "SELECT timestamp, title, message FROM comments LIMIT 5";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			array_push($comments, $row);
+		}
+	}
 
     $conn->close();
 ?>
@@ -43,7 +42,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>New Uploads <small></small></h3>
+                <h3><b>New Uploads</b> <small></small></h3>
               </div>
             </div>
 
@@ -60,31 +59,27 @@
                     <p class="text-muted font-13 m-b-30">
                     This section shows the recent file uploads yet to be confirmed..
                     </p>
-                    <table id="datatable-fixed-header" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>From</th>
-                          <th>Message</th>
-                        </tr>
-                      </thead>
+                    <table id="datatable-fixed-header" class="table table-striped table-hover">
+  						<thead>
+  						  <tr>
+  							<th style="width: 150px;">Date and Time</th>
+							<th>Message Title</th>
+							<th>Message</th>
+  						  </tr>
+  						</thead>
 
-                      <tbody>
-                        <?php
-                            foreach ($arr as $row) {
-                                echo "<tr id=" . $id .">";
-                                foreach ($row as $col) {
-                                        $counter = $counter + 1;
-                                        if($counter == 1) {
-                                            $id = $col;
-                                            continue;
-                                        }
-                                        echo "<td> $col </td>";
-                                    }
-                                echo "</tr>";
-                            }
-                            ?>
-                      </tbody>
-                    </table>
+  						<tbody>
+  						  <?php
+							foreach ($comments as $row) {
+								echo "<tr>";
+								foreach ($row as $col) {
+									echo "<td> $col </td>";
+								}
+								echo "</tr>";
+						  	}
+  						  ?>
+  						</tbody>
+  					</table>
                   </div>
                 </div>
               </div>
@@ -92,9 +87,7 @@
             </div>
           </div>
         </div>
-        <!-- /page content -->
 
-        <!-- footer content -->
         <?php require('supportFiles/footer.php'); ?>
       </div>
     </div>

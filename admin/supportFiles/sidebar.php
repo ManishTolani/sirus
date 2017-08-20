@@ -22,7 +22,7 @@ echo "
             <div class='menu_section'>
                 <h3>General</h3>
                 <ul class='nav side-menu'>
-                    <li class='active'><a href='index.php'><i class='fa fa-home'></i> Home </a></li>
+                    <li><a href='index.php'><i class='fa fa-home'></i> Home </a></li>
                     <li><a href='uploads.php'><i class='fa fa-laptop'></i> Upload Stats <span class='label label-warning pull-right'>Ongoing: 102</span></a></li>
                     <li><a href='downloads.php'><i class='fa fa-laptop'></i> Download Stats <span class='label label-success pull-right'>Ongoing: 84</span></a></li>
                     <li><a href='upload_requests.php'><i class='fa fa-laptop'></i> Upload Requests <span class='label label-info pull-right'>New: 31</span></a></li>

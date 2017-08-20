@@ -75,7 +75,7 @@ $(document).ready(function() {
                                 s += "<td>" + result[i]['file_name'] + "</td>";
                                 s += "<td>" + result[i]['uploaded'] + "</td>";
                                 s += "<td>" + (result[i]['times_dw'] == null ? 0 : result[i]['times_dw']) + " times </td>";
-                                s += "<td><a href='http://ltz/download.php?file=" + result[i]['file_name'] + "&file_type=" + result[i]['file_type'] + "&file_id=" + resut[i]['id'] + "'style='cursor: hand;'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span></a></td></tr>";
+                                s += "<td><a href='http://ltz/download.php?file=" + result[i]['file_name'] + "&file_type=" + result[i]['file_type'] + "&file_id=" + result[i]['id'] + "'style='cursor: hand;'><span class='glyphicon glyphicon-download-alt' aria-hidden='true'></span></a></td></tr>";
                             }
 
                         } else {

@@ -167,41 +167,6 @@ if (isset($_SESSION['user_data']['id']) and !empty($_SESSION['user_data']['id'])
     <!-- Dashboard Main Start -->
     <div class="section dashboard-main" style="display: block;">
         <div class="container card-container">
-            <!-- Advanced Options -->
-            <!--<div class="row" style="text-align: left">
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="card-lg">
-                        <div class="card-left">
-                            <i class="fa fa-star-o fa-lg"></i>
-                        </div>
-                        <div class="card-right">
-                            <div class="card-right-title">Popular Downloads</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                    <div class="card-lg">
-                        <div class="card-left">
-                            <i class="fa fa-cloud-download fa-lg"></i>
-                        </div>
-                        <div class="card-right">
-                            <div class="card-right-title">Latest Updates</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 hidden-sm col-xs-12">
-                    <div class="card-lg">
-                        <div class="card-left">
-                            <i class="fa fa-tasks fa-lg"></i>
-                        </div>
-                        <div class="card-right">
-                            <div class="card-right-title">Featured Downloads</div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <br /><br />
-            <!-- First Row Content Start -->
             <div class="row">
                 <a href="uploads/softwares">
                     <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">

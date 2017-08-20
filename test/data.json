@@ -1,0 +1,92 @@
+{
+  "total_uploads_count": 8,
+  "ongoing_uploads_count": 0,
+  "successfull_uploads_count": 2,
+  "failed_uploads_count": 2,
+  "ongoing_uploads": {
+	  "1": {
+        "file_name": "Austin Wallis",
+        "file_size": 767,
+        "file_type": "Terralabs",
+        "user": "Curtis",
+        "starts": "22/03/1912",
+        "ends": ""
+      },
+      "2": {
+        "file_name": "Cory Rebelo",
+        "file_size": 923,
+        "file_type": "Citisys",
+        "user": "Warren",
+        "starts": "27/12/1989",
+        "ends": ""
+      },
+      "3": {
+        "file_name": "Victoria Milligan",
+        "file_size": 751,
+        "file_type": "Unilogic",
+        "user": "Katelin",
+        "starts": "04/08/1980",
+        "ends": ""
+      },
+      "4": {
+        "file_name": "Tyler Oldman",
+        "file_size": 341,
+        "file_type": "Terralabs",
+        "user": "Juliana",
+        "starts": "12/11/1988",
+        "ends": ""
+      },
+      "5": {
+        "file_name": "Gavin Mercer",
+        "file_size": 470,
+        "file_type": "Terrasys",
+        "user": "Layla",
+        "starts": "16/09/1943",
+        "ends": ""
+      }
+  },
+  "successfull_uploads": {
+	  "1": {
+        "file_name": "Curtis Milling",
+        "file_size": 95204,
+        "file_type": "Chromaton",
+        "user": "Juliana",
+        "starts": "22/05/1960",
+        "ends": ""
+      },
+      "2": {
+        "file_name": "Rikki Brier",
+        "file_size": 44135,
+        "file_type": "LoopSys",
+        "user": "Cory",
+        "starts": "25/09/1978",
+        "ends": ""
+      },
+      "3": {
+        "file_name": "Cyrus Sager",
+        "file_size": 9534,
+        "file_type": "Xenosys",
+        "user": "Heath",
+        "starts": "30/07/1924",
+        "ends": ""
+      }
+  },
+  "failed_uploads": {
+	  "1": {
+        "file_name": "Liza Hancock",
+        "file_size": 7251,
+        "file_type": "Qualcore",
+        "user": "Theo",
+        "starts": "20/02/1941",
+        "ends": ""
+      },
+      "2": {
+        "file_name": "Roselyn Risley",
+        "file_size": 68278,
+        "file_type": "Acousticom",
+        "user": "Jenette",
+        "starts": "03/01/1930",
+        "ends": ""
+      }
+  }
+}
