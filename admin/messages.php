@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Messages</title>
+    <title>LTZ: Messages and Content Requests</title>
     <?php require('supportFiles/styles.php'); ?>
     <style>
 
@@ -59,7 +59,7 @@
                     <p class="text-muted font-13 m-b-30">
                     This section shows the recent file uploads yet to be confirmed..
                     </p>
-                    <table id="datatable-fixed-header" class="table table-striped table-hover">
+                    <table id="datatable-fixed-header" class="table table-striped table-bordered">
   						<thead>
   						  <tr>
   							<th style="width: 150px;">Date and Time</th>

@@ -55,32 +55,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>User: <?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></title>
+    <title>LTZ: User info - <?php echo $user_data['first_name'] . ' ' . $user_data['last_name']; ?></title>
     <?php require('supportFiles/styles.php'); ?>
-    <style>
-        .custom-table {
-            width: 100%;
-        }
-
-        .custom-table td, .custom-table th{
-            padding: 10px 5px;
-        }
-
-        .custom-table th {
-            width: 175px;
-            max-width: 175px;
-        }
-
-        .table-knobs {
-            text-align: center;
-        }
-
-        .table-knobs div {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/custom/user.css" />
   </head>
 
   <body class="nav-md">

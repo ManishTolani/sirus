@@ -26,7 +26,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>DataTables | Gentelella</title>
+    <title>LTZ: New File Upload Requests</title>
     <?php require('supportFiles/styles.php'); ?>
   </head>
 

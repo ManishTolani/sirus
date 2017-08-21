@@ -25,7 +25,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Users: All</title>
+    <title>LTZ: User Management</title>
     <?php require('supportFiles/styles.php'); ?>
   </head>
 

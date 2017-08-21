@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Download Stats</title>
+    <title>LTZ: Download Stats</title>
     <?php require('supportFiles/styles.php'); ?>
   </head>
 
